@@ -1,11 +1,14 @@
 from util.operation_excel import OperationExcel
 from util.operation_json import OperationJson
-import json
 import sys
-#sys.path.append('D:test_api/data')
-
-sys.path.append('/Users/qishengwu/Downloads/test_api/data')
+import os
+import json
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+rootPath = rootPath + '/data/'
+sys.path.append(rootPath)
 import data_config
+
 
 class  GetData:
 	def __init__(self):

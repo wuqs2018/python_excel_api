@@ -1,5 +1,7 @@
 import xlrd
 from xlutils.copy import copy
+import sys
+import os
 
 class OperationExcel:
 
@@ -8,11 +10,14 @@ class OperationExcel:
 			self.file_name = file_name
 			self.sheet_id = sheet_id
 		else:
-			self.file_name = './util/word.xls'
+			curPath = os.path.abspath(os.path.dirname(__file__))
+			rootPath = os.path.split(curPath)[0]
+			self.file_name = rootPath + '/util/word.xls'
 			self.sheet_id = 0
 		self.num = 0
 		self.data = self.get_data()
-
+		
+	#获取表格信息
 	def get_data(self):
 		data = xlrd.open_workbook(self.file_name)
 		tables = data.sheets()[self.sheet_id]

@@ -1,8 +1,12 @@
 import json
+import sys
+import os
 class OperationJson:
 	def __init__(self, file_path=None):
 		if file_path == None:
-			self.file_path = './util/data.json'
+			curPath = os.path.abspath(os.path.dirname(__file__))
+			rootPath = os.path.split(curPath)[0]
+			self.file_path = rootPath + '/util/data.json'
 		else:
 			self.file_path = file_path
 		self.data = self.read_data()
